@@ -4,9 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-click = "*"
-prompt-toolkit = "*"
 pygame = "*"
+keyboard = "*"
+tqdm = "*"
+colorama = "*"
+prompt-toolkit = "*"
 
 [dev-packages]
 

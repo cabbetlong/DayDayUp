@@ -31,30 +31,30 @@ def gen_menu(origin_menu, index):
         else:
             menu[line] = html_wrapper('text', '  ' + menu[line])
     return menu
-    
-    
+
+
 def fill_blank(display_lines, blank_line_size):
     for i in range(blank_line_size):
         display_lines.append(html_wrapper('text', ' '))
-    
-    
+
+
 def display():
     terminal_size = os.get_terminal_size()
     columns = terminal_size.columns
     lines = terminal_size.lines
-    
+
     display_lines = ['\r']
     display_lines.append(html_wrapper('title', 'Haha'))
-    
+
     menu_start_line = (lines - 1) // 2 - len(MAIN_MENU) // 2
     blank_line_size = (lines - 1 - len(MAIN_MENU)) // 2
     
     fill_blank(display_lines, blank_line_size)
     display_lines.extend(gen_menu(MAIN_MENU, SELECTED_LINE))
     fill_blank(display_lines, blank_line_size)
-    
+
     display_lines = map(lambda x: x, display_lines)
-    
+
     for line in display_lines:
         print_formatted_text(HTML('\n'.join(display_lines)), style=style)
         #print(line)
@@ -76,4 +76,3 @@ display()
 keyboard.hook(on_press_key)
 
 keyboard.wait('esc')
-#print(Fore.WHITE)

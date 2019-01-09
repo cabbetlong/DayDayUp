@@ -48,7 +48,7 @@ def display():
 
     menu_start_line = (lines - 1) // 2 - len(MAIN_MENU) // 2
     blank_line_size = (lines - 1 - len(MAIN_MENU)) // 2
-    
+
     fill_blank(display_lines, blank_line_size)
     display_lines.extend(gen_menu(MAIN_MENU, SELECTED_LINE))
     fill_blank(display_lines, blank_line_size)
@@ -69,6 +69,9 @@ def on_press_key(e):
         elif e.name == 'up':
             SELECTED_LINE -= 1
             display()
+        elif e.name == 'enter':
+            if (SELECTED_LINE % len(MAIN_MENU) == 0):
+                print("Playing music")
 
 
 display()
